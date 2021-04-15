@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Event = require('../models/event')
 
-
+//get request at /events
 router.get('/', async (req, res)=>{
     try {
         const newEvent = await Event.find()
@@ -12,7 +12,7 @@ router.get('/', async (req, res)=>{
     }
 })
 
-
+//post request at /events for creating events
 router.post('/', async (req, res) => {
     const event = new Event({
         title : req.body.title,
@@ -27,6 +27,7 @@ router.post('/', async (req, res) => {
     }
 })
 
+//finding event by passing id in params
 router.get('/:id', async (req, res)=>{
     try{
         const event = await Event.findById(req.params.id)
@@ -38,6 +39,7 @@ router.get('/:id', async (req, res)=>{
     }
 })
 
+//delete rquest at /event/id
 router.delete('/:id', async (req, res)=>{
     try {
         const eventIds = req.params.id.split(',');
@@ -53,6 +55,8 @@ router.delete('/:id', async (req, res)=>{
     }
 })
 
+
+//update request at /event
 router.patch('/:id', async (req, res)=>{
     try {
         const event = await Event.findById(req.params.id)

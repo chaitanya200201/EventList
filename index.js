@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-const url = 'mongodb://localhost/eventslist'
+const url = 'mongodb://localhost:27017/eventslist'
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, })
 const db = mongoose.connection
